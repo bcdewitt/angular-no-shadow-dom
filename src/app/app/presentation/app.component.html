@@ -12,10 +12,10 @@
 <ui-page
   heading="Example App"
   [primaryNavOpen]="primaryNavOpen"
-  (setPrimaryNavOpen)="setPrimaryNavOpen($event)"
+  (setPrimaryNavOpen)="setPrimaryNavOpen.emit($event)"
 >
-  <ui-primary-nav-link slot="primary-nav-links" href="/grocery-list"
-    >Grocery List</ui-primary-nav-link
+  <ui-primary-nav-link slot="primary-nav-links" href="/some-page"
+    >Some Page</ui-primary-nav-link
   >
   <ui-button type="primary">Primary Button</ui-button>
   <ui-button type="secondary">Secondary Button</ui-button>

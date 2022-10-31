@@ -1,23 +1,28 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { AppFacade } from '../core/app.facade';
 import { AppComponent } from '../presentation/app.component';
 
-/** Integrates/composes parts of the core layer and the presentation layer together */
+/** The smart component. Integrates/composes parts of the core layer and the presentation layer together */
 @Component({
   standalone: true,
-  imports: [AppComponent],
+  imports: [CommonModule, AppComponent],
+  providers: [AppFacade],
 
-  selector: 'app-app-abstraction',
-  templateUrl: `
-    <app-app
-      [primaryNavOpen]="primaryNavOpen"
+  selector: 'app-abstraction',
+  template: `
+    <app-presentation
+      [primaryNavOpen]="primaryNavOpen$ | async"
       (setPrimaryNavOpen)="setPrimaryNavOpen($event)"
-    ></app-app>
+    ></app-presentation>
   `,
 })
 export class AppAbstractionComponent {
-  // This guy handles state. Better here than in the shared components - otherwise the shared components get harder to test
-  protected primaryNavOpen = false;
-  protected setPrimaryNavOpen(value: boolean): void {
-    this.primaryNavOpen = value;
+  protected primaryNavOpen$ = this.appFacade.primaryNavOpen$;
+
+  protected setPrimaryNavOpen(value: boolean) {
+    this.appFacade.setPrimaryNavOpen(value);
   }
+
+  constructor(private appFacade: AppFacade) {}
 }

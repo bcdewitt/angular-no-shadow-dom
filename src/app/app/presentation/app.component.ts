@@ -1,11 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import {
   UiButtonComponent,
   UiPageComponent,
   UiPrimaryNavLinkComponent,
-} from 'shared/components';
+} from '../../../shared/components';
 
+/** The dumb (referentially transparent) component. Testable. No need for mocks. */
 @Component({
   // Yay for Angular 14's standalone components!
   standalone: true,
@@ -16,10 +23,12 @@ import {
     UiButtonComponent,
   ],
 
-  selector: 'app-app',
+  selector: 'app-presentation',
   templateUrl: './app.component.html',
   // NOTE: We don't need CSS here
   // Design would be shared in a big company via a set of components that implement a design system underneath
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  preserveWhitespaces: true,
 })
 export class AppComponent {
   @Input() primaryNavOpen = false;
