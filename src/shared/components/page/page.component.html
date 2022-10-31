@@ -1,26 +1,54 @@
 <div class="page">
-  <div
-    class="page__head"
-    *ngIf="hasSlottedElements(headWrapper); else headTemplate"
-  >
-    <ng-container *ngTemplateOutlet="headTemplate"></ng-container>
-  </div>
-  <div
-    class="page__body"
-    *ngIf="hasSlottedElements(bodyWrapper); else bodyTemplate"
-  >
-    <ng-container *ngTemplateOutlet="bodyTemplate"></ng-container>
-  </div>
+  <mat-drawer-container class="app-container" autosize>
+    <mat-drawer #drawer class="side-menu-container" mode="side">
+      <mat-nav-list
+        *ngIf="hasSlottedElements(primaryNavWrapper); else primaryNavTemplate"
+      >
+        <ng-container *ngTemplateOutlet="primaryNavTemplate"></ng-container>
+      </mat-nav-list>
+    </mat-drawer>
+    <div class="main-content-container">
+      <mat-toolbar
+        class="top-toolbar"
+        color="primary"
+        *ngIf="hasSlottedElements(primaryNavWrapper)"
+      >
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="setPrimaryNavOpen.emit(!this.primaryNavOpen)"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <ng-container [ngSwitch]="level">
+          <h1 class="title" *ngSwitchCase="1">{{ heading }}</h1>
+          <h2 class="title" *ngSwitchCase="2">{{ heading }}</h2>
+          <h3 class="title" *ngSwitchCase="3">{{ heading }}</h3>
+          <h4 class="title" *ngSwitchCase="3">{{ heading }}</h4>
+          <h5 class="title" *ngSwitchCase="3">{{ heading }}</h5>
+          <h6 class="title" *ngSwitchCase="3">{{ heading }}</h6>
+          <div class="title" *ngSwitchDefault>{{ heading }}</div>
+        </ng-container>
+      </mat-toolbar>
+      <div
+        class="page__body"
+        *ngIf="hasSlottedElements(bodyWrapper); else bodyTemplate"
+      >
+        <ng-container *ngTemplateOutlet="bodyTemplate"></ng-container>
+      </div>
+    </div>
+  </mat-drawer-container>
 </div>
 
-<ng-template #headTemplate>
-  <div class="page__head-wrapper" #headWrapper>
-    <ng-content selector='[slot="head"]'></ng-content>
+<ng-template #primaryNavTemplate>
+  <div class="page__primary-nav-wrapper" #primaryNavWrapper>
+    <ng-content select='[slot="primary-nav-links"]'></ng-content>
   </div>
 </ng-template>
 
 <ng-template #bodyTemplate>
   <div class="page__body-wrapper" #bodyWrapper>
-    <ng-content selector=":not([slot])"></ng-content>
+    <ng-content></ng-content>
   </div>
 </ng-template>

@@ -9,7 +9,14 @@
 
   Ideally, these would use actual Shadow DOM encapsulation instead of Angular's default emulated Shadow DOM, since global CSS selectors can still reach their inner parts (HTML and CSS are global by default). This makes common approaches to CSS not work, though, so it takes some learning. Instead, I tried to make ng-content work like slots from the outside for now. As long as there's no CSS or inlined styles outside the shared components (other than the external global stylesheets like "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"), this should be a two-way door.
 -->
-<ui-page>
+<ui-page
+  heading="Example App"
+  [primaryNavOpen]="primaryNavOpen"
+  (setPrimaryNavOpen)="setPrimaryNavOpen($event)"
+>
+  <ui-primary-nav-link slot="primary-nav-links" href="/grocery-list"
+    >Grocery List</ui-primary-nav-link
+  >
   <ui-button type="primary">Primary Button</ui-button>
   <ui-button type="secondary">Secondary Button</ui-button>
   <ui-button type="tertiary">Tertiary Button</ui-button>

@@ -1,0 +1,17 @@
+:host {
+  all: initial;
+  display: contents;
+}
+
+a {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #f0f0f0 !important;
+}
+
+a:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+:host ::ng-deep .mat-list-item-content {
+  color: inherit !important;
+}

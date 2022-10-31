@@ -5,26 +5,30 @@
 
 .page {
   display: grid;
-  grid:
-    'head' min-content
-    'body' 1fr
-    / 1fr;
   min-height: 100%;
+}
 
+mat-toolbar {
+  gap: 1rem;
+}
+
+mat-drawer-container,
+mat-drawer {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #15181e;
   color: #f0f0f0;
 }
 
-.page__head {
-  grid-area: head;
+mat-drawer {
+  background-color: #202327;
+  color: #f0f0f0;
+}
+
+.page__primary-nav-wrapper,
+.page__body-wrapper {
+  display: contents;
 }
 
 .page__body {
-  grid-area: head;
-}
-
-.page__head-wrapper,
-.page__body-wrapper {
-  display: contents;
+  padding: 1rem;
 }
