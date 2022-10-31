@@ -1,0 +1,60 @@
+<ng-container *ngIf="type === 'primary'">
+  <!-- Because conditional binding doesn't exist, we get lots of fun duplication. Thanks, Angular! -->
+  <ng-container *ngIf="label === ''; else primaryWithLabel">
+    <button type="button" mat-raised-button color="primary">
+      <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
+    </button>
+  </ng-container>
+  <ng-template #primaryWithLabel>
+    <button
+      type="button"
+      [attr.aria-label]="label"
+      mat-raised-button
+      color="primary"
+    >
+      <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
+    </button>
+  </ng-template>
+</ng-container>
+
+<ng-container *ngIf="type === 'secondary'">
+  <ng-container *ngIf="label === ''; else secondaryWithLabel">
+    <button type="button" mat-raised-button color="accent">
+      <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
+    </button>
+  </ng-container>
+  <ng-template #secondaryWithLabel>
+    <button
+      type="button"
+      [attr.aria-label]="label"
+      mat-raised-button
+      color="accent"
+    >
+      <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
+    </button>
+  </ng-template>
+</ng-container>
+
+<ng-container *ngIf="type === 'tertiary'">
+  <ng-container *ngIf="label === ''; else secondaryWithLabel">
+    <button type="button" class="tertiary" mat-button color="basic">
+      <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
+    </button>
+  </ng-container>
+  <ng-template #secondaryWithLabel>
+    <button
+      type="button"
+      class="tertiary"
+      [attr.aria-label]="label"
+      mat-button
+      color="basic"
+    >
+      <ng-container [ngTemplateOutlet]="buttonContent"></ng-container>
+    </button>
+  </ng-template>
+</ng-container>
+
+<ng-template #buttonContent>
+  <span class="button__content-wrapper" #ref><ng-content></ng-content></span>
+  <ng-container *ngIf="!ref.hasChildNodes()">{{ label }}</ng-container>
+</ng-template>

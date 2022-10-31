@@ -1,0 +1,26 @@
+<div class="page">
+  <div
+    class="page__head"
+    *ngIf="hasSlottedElements(headWrapper); else headTemplate"
+  >
+    <ng-container *ngTemplateOutlet="headTemplate"></ng-container>
+  </div>
+  <div
+    class="page__body"
+    *ngIf="hasSlottedElements(bodyWrapper); else bodyTemplate"
+  >
+    <ng-container *ngTemplateOutlet="bodyTemplate"></ng-container>
+  </div>
+</div>
+
+<ng-template #headTemplate>
+  <div class="page__head-wrapper" #headWrapper>
+    <ng-content selector='[slot="head"]'></ng-content>
+  </div>
+</ng-template>
+
+<ng-template #bodyTemplate>
+  <div class="page__body-wrapper" #bodyWrapper>
+    <ng-content selector=":not([slot])"></ng-content>
+  </div>
+</ng-template>

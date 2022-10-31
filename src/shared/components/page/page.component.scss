@@ -1,0 +1,27 @@
+:host {
+  all: initial;
+  display: contents;
+}
+
+.page {
+  display: grid;
+  grid:
+    'head' min-content
+    'body' 1fr
+    / 1fr;
+  min-height: 100%;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.page__head {
+  grid-area: head;
+}
+
+.page__body {
+  grid-area: head;
+}
+
+.page__head-wrapper,
+.page__body-wrapper {
+  display: contents;
+}

@@ -1,0 +1,16 @@
+<!--
+  Completely built from shared components to centralize repeated CSS and HTML.
+
+  Vendor lock-in avoided! We can swap out Material underneath the components because none of this logic relies on that library directly.
+
+  There's no "raised" or "stroked" attributes/properties here, either. Instead, design is selected underneath based on our own simplified semantics (NOT Material's). In this case, type="primary" describes a button in a way that is meaningful without describing how it has been designed. We map those semantics to a particular design, which is currently mat-raised-button and color="primary" but they are now private and shared details rather than public and duplicated everywhere (yay for information hiding).
+
+  The shared components could also be put into Storybook to let designers or other engineers easily know what components are available to work with (and/or play with the component options in real time).
+
+  Ideally, these would use actual Shadow DOM encapsulation instead of Angular's default emulated Shadow DOM, since global CSS selectors can still reach their inner parts (HTML and CSS are global by default). This makes common approaches to CSS not work, though, so it takes some learning. Instead, I tried to make ng-content work like slots from the outside for now. As long as there's no CSS or inlined styles outside the shared components (other than the external global stylesheets like "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"), this should be a two-way door.
+-->
+<ui-page>
+  <ui-button type="primary">Primary Button</ui-button>
+  <ui-button type="secondary">Secondary Button</ui-button>
+  <ui-button type="tertiary">Tertiary Button</ui-button>
+</ui-page>

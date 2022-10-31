@@ -1,0 +1,17 @@
+:host {
+  all: initial;
+  display: contents;
+}
+
+.button__content-wrapper {
+  display: contents;
+}
+
+button {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+// NOTE: You can put any style overrides for button here
+.tertiary {
+  color: #f0f0f0;
+}
