@@ -28,7 +28,6 @@ import {
   // NOTE: We don't need CSS here
   // Design would be shared in a big company via a set of components that implement a design system underneath
   changeDetection: ChangeDetectionStrategy.OnPush,
-  preserveWhitespaces: true,
 })
 export class AppComponent {
   @Input() primaryNavOpen = false;

@@ -14,10 +14,9 @@
   [primaryNavOpen]="primaryNavOpen"
   (setPrimaryNavOpen)="setPrimaryNavOpen.emit($event)"
 >
-  <ui-primary-nav-link slot="primary-nav-links" href="/some-page"
-    >Some Page</ui-primary-nav-link
-  >
-  <ui-button type="primary">Primary Button</ui-button>
-  <ui-button type="secondary">Secondary Button</ui-button>
-  <ui-button type="tertiary">Tertiary Button</ui-button>
+  <ui-primary-nav-link slot="primary-nav-links" href="/some-page">
+    Some Page
+  </ui-primary-nav-link>
+
+  <ng-content></ng-content>
 </ui-page>
