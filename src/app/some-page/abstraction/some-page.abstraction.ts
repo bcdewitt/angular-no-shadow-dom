@@ -11,5 +11,6 @@ import { SomePageComponent } from '../presentation/some-page.component';
   template: `
     <app-some-page></app-some-page>
   `,
+  styles: [':host { display: contents; }'],
 })
 export class SomePageAbstractionComponent {}

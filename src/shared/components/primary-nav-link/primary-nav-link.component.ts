@@ -1,5 +1,11 @@
 import { MatListModule } from '@angular/material/list';
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,4 +24,10 @@ import { CommonModule } from '@angular/common';
 })
 export class UiPrimaryNavLinkComponent {
   @Input() href = '';
+  @Output() opened = new EventEmitter<string>();
+
+  onClick(event: MouseEvent): void {
+    this.opened.emit(this.href);
+    event.preventDefault();
+  }
 }

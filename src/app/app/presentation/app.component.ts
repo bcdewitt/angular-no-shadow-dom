@@ -25,11 +25,15 @@ import {
 
   selector: 'app-presentation',
   templateUrl: './app.component.html',
-  // NOTE: We don't need CSS here
+  styles: [':host { display: contents; }'],
+  // NOTE: We don't need CSS here (other than to remove elements from rendering)
   // Design would be shared in a big company via a set of components that implement a design system underneath
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   @Input() primaryNavOpen = false;
+  @Input() heading = '';
+
   @Output() setPrimaryNavOpen = new EventEmitter<boolean>();
+  @Output() setUrl = new EventEmitter<string>();
 }

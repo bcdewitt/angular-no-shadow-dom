@@ -8,6 +8,12 @@
   min-height: 100%;
 }
 
+.page__main {
+  display: grid;
+  min-height: 100%;
+  grid-template-rows: auto 1fr;
+}
+
 mat-toolbar {
   gap: 1rem;
 }
@@ -24,17 +30,16 @@ mat-drawer {
   color: #f0f0f0;
 }
 
-.page__primary-nav-wrapper,
-.page__body-wrapper {
-  display: contents;
-}
-
 .page__body {
+  display: grid;
+  gap: 1rem;
   padding: 1rem;
+  grid-auto-rows: min-content;
 }
 
-button ::before {
+.page__button::before {
   content: '';
+  display: block;
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -43,6 +48,6 @@ button ::before {
   border-radius: 50%;
 }
 
-button:hover ::before {
+.page__button:hover::before {
   background-color: rgba(0, 0, 0, 0.1);
 }

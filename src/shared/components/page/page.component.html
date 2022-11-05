@@ -1,25 +1,19 @@
 <div class="page">
   <mat-drawer-container class="app-container" autosize>
     <mat-drawer #drawer class="side-menu-container" mode="side">
-      <mat-nav-list
-        *ngIf="hasSlottedElements(primaryNavWrapper); else primaryNavTemplate"
-      >
-        <ng-container *ngTemplateOutlet="primaryNavTemplate"></ng-container>
+      <mat-nav-list>
+        <ng-content select='[slot="primary-nav-links"]'></ng-content>
       </mat-nav-list>
     </mat-drawer>
-    <div class="main-content-container">
-      <mat-toolbar
-        class="top-toolbar"
-        color="primary"
-        *ngIf="hasSlottedElements(primaryNavWrapper)"
-      >
+    <div class="page__main">
+      <mat-toolbar color="primary">
         <button
+          class="page__button"
           type="button"
-          aria-label="Toggle sidenav"
           mat-icon-button
           (click)="setPrimaryNavOpen.emit(!this.primaryNavOpen)"
         >
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          <mat-icon aria-label="Toggle sidenav">menu</mat-icon>
         </button>
         <ng-container [ngSwitch]="level">
           <h1 class="title" *ngSwitchCase="1">{{ heading }}</h1>
@@ -33,22 +27,11 @@
       </mat-toolbar>
       <div
         class="page__body"
-        *ngIf="hasSlottedElements(bodyWrapper); else bodyTemplate"
+        [class.hidden]="!hasSlottedElements(bodyWrapper)"
+        #bodyWrapper
       >
-        <ng-container *ngTemplateOutlet="bodyTemplate"></ng-container>
+        <ng-content></ng-content>
       </div>
     </div>
   </mat-drawer-container>
 </div>
-
-<ng-template #primaryNavTemplate>
-  <div class="page__primary-nav-wrapper" #primaryNavWrapper>
-    <ng-content select='[slot="primary-nav-links"]'></ng-content>
-  </div>
-</ng-template>
-
-<ng-template #bodyTemplate>
-  <div class="page__body-wrapper" #bodyWrapper>
-    <ng-content></ng-content>
-  </div>
-</ng-template>

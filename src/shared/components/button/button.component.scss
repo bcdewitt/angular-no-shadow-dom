@@ -17,15 +17,17 @@ button {
   color: #f0f0f0;
 }
 
-button ::before {
+button::before {
   content: '';
+  display: block;
   position: absolute;
   inset: 0;
   pointer-events: none;
   transition: background-color 0.2s;
   background-color: transparent;
+  margin: 0;
 }
 
-button:hover ::before {
+button:hover::before {
   background-color: rgba(0, 0, 0, 0.1);
 }

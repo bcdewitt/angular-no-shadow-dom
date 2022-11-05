@@ -1,1 +1,1 @@
-export * from './abstraction/app.abstraction';
+export * from './core/app.facade';
