@@ -8,10 +8,24 @@
 }
 
 button {
+  position: relative;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 // NOTE: You can put any style overrides for button here
 .tertiary {
   color: #f0f0f0;
+}
+
+button ::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: background-color 0.2s;
+  background-color: transparent;
+}
+
+button:hover ::before {
+  background-color: rgba(0, 0, 0, 0.1);
 }

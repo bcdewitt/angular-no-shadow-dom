@@ -15,12 +15,12 @@ mat-toolbar {
 mat-drawer-container,
 mat-drawer {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-color: #15181e;
+  background-color: #202327;
   color: #f0f0f0;
 }
 
 mat-drawer {
-  background-color: #202327;
+  background-color: #2e3138;
   color: #f0f0f0;
 }
 
@@ -31,4 +31,18 @@ mat-drawer {
 
 .page__body {
   padding: 1rem;
+}
+
+button ::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: background-color 0.2s;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+button:hover ::before {
+  background-color: rgba(0, 0, 0, 0.1);
 }

@@ -11,6 +11,8 @@ import { UiButtonComponent } from '../../../shared/components';
   selector: 'app-some-page',
   templateUrl: './some-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+
+  // NOTE: Placed here temporarily, until a ui-button-list is created to lay buttons out
   preserveWhitespaces: true,
 })
 export class SomePageComponent {}

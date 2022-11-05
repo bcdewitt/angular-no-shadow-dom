@@ -6,10 +6,13 @@
 a {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   color: #f0f0f0 !important;
+  transition: background-color 0.2s;
+  background-color: transparent;
 }
 
-a:hover {
-  background-color: rgba(255, 255, 255, 0.04) !important;
+a:hover,
+a:focus {
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 :host ::ng-deep .mat-list-item-content {
