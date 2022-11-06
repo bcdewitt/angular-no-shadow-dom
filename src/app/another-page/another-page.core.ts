@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AppFacade, AppFacadeModule } from '../core';
 
 @Injectable()
-export class SomePageFacade {
+export class AnotherPageFacade {
   constructor(private appFacade: AppFacade) {}
 
   setHeading(value: string): void {
@@ -13,6 +13,6 @@ export class SomePageFacade {
 
 @NgModule({
   imports: [AppFacadeModule],
-  providers: [SomePageFacade],
+  providers: [AnotherPageFacade],
 })
-export class SomePageFacadeModule {}
+export class AnotherPageFacadeModule {}

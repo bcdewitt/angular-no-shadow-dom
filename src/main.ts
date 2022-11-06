@@ -6,21 +6,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Route, RouterModule } from '@angular/router';
 
 // NOTE: Routing is part of the abstraction layer. Only import components from there
-import { AppAbstractionComponent } from './app/abstraction';
+import {
+  AppAbstractionComponent,
+  AnotherPageAbstractionComponent,
+  SomePageAbstractionComponent,
+} from './app/abstraction';
 
-const ROUTES: Route[] = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'some-page',
-  },
-  {
-    path: 'some-page',
-    loadComponent: () =>
-      import('./app/some-page/some-page.abstraction').then(
-        (mod) => mod.SomePageAbstractionComponent
+/*
+NOTE: Use the following format if you need to lazy-load modules for better performance
+
+loadComponent: () =>
+      import('./app/another-page/another-page.abstraction').then(
+        (mod) => mod.AnotherPageAbstractionComponent
       ),
-  },
+*/
+const ROUTES: Route[] = [
+  { path: '', pathMatch: 'full', redirectTo: 'some-page' },
+  { path: 'some-page', component: SomePageAbstractionComponent },
+  { path: 'another-page', component: AnotherPageAbstractionComponent },
 ];
 
 bootstrapApplication(AppAbstractionComponent, {

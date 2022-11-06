@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AppFacade, AppFacadeModule } from './app.core';
 import { AppComponent } from '../presentation';
-import { skip, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 /** The smart component. Integrates/composes parts of the core layer and the presentation layer together */
 @Component({
@@ -24,7 +26,7 @@ import { skip, take } from 'rxjs/operators';
   styles: [':host, router-outlet { display: contents; }'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppAbstractionComponent {
+export class AppAbstractionComponent implements OnDestroy {
   protected primaryNavOpen$ = this.appFacade.primaryNavOpen$;
   protected heading$ = this.appFacade.heading$;
 
@@ -36,10 +38,29 @@ export class AppAbstractionComponent {
     this.appFacade.setUrl(url);
   }
 
-  constructor(private appFacade: AppFacade, route: ActivatedRoute) {
-    // this.setUrl(route.snapshot.url.join(''));
+  #urlSubscription: Subscription;
+  #titleSubscription: Subscription;
+  constructor(
+    private appFacade: AppFacade,
+    titleService: Title,
+    router: Router,
+    route: ActivatedRoute
+  ) {
     route.url.pipe(take(1)).subscribe(() => {
       this.setUrl(window.location.pathname);
     });
+
+    this.#urlSubscription = appFacade.url$.subscribe((url) => {
+      router.navigateByUrl(url);
+    });
+
+    this.#titleSubscription = appFacade.title$.subscribe((title) => {
+      titleService.setTitle(title);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.#urlSubscription.unsubscribe();
+    this.#titleSubscription.unsubscribe();
   }
 }

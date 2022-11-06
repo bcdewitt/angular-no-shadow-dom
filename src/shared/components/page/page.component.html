@@ -16,13 +16,13 @@
           <mat-icon aria-label="Toggle sidenav">menu</mat-icon>
         </button>
         <ng-container [ngSwitch]="level">
-          <h1 class="title" *ngSwitchCase="1">{{ heading }}</h1>
-          <h2 class="title" *ngSwitchCase="2">{{ heading }}</h2>
-          <h3 class="title" *ngSwitchCase="3">{{ heading }}</h3>
-          <h4 class="title" *ngSwitchCase="3">{{ heading }}</h4>
-          <h5 class="title" *ngSwitchCase="3">{{ heading }}</h5>
-          <h6 class="title" *ngSwitchCase="3">{{ heading }}</h6>
-          <div class="title" *ngSwitchDefault>{{ heading }}</div>
+          <h1 class="page__title" *ngSwitchCase="1">{{ heading }}</h1>
+          <h2 class="page__title" *ngSwitchCase="2">{{ heading }}</h2>
+          <h3 class="page__title" *ngSwitchCase="3">{{ heading }}</h3>
+          <h4 class="page__title" *ngSwitchCase="3">{{ heading }}</h4>
+          <h5 class="page__title" *ngSwitchCase="3">{{ heading }}</h5>
+          <h6 class="page__title" *ngSwitchCase="3">{{ heading }}</h6>
+          <div class="page__title" *ngSwitchDefault>{{ heading }}</div>
         </ng-container>
       </mat-toolbar>
       <div

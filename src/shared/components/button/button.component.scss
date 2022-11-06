@@ -10,6 +10,9 @@
 button {
   position: relative;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  white-space: normal; /* Why would Material set this to nowrap? */
+  line-height: normal;
+  padding: 0.5rem;
 }
 
 // NOTE: You can put any style overrides for button here

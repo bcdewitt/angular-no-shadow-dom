@@ -15,7 +15,15 @@
 }
 
 mat-toolbar {
-  gap: 1rem;
+  flex-wrap: wrap;
+  column-gap: 1rem;
+  row-gap: 0.25rem;
+  height: auto !important;
+  padding: 0.75rem;
+}
+
+.page__title {
+  white-space: normal !important;
 }
 
 mat-drawer-container,

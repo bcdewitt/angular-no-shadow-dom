@@ -1,4 +1,5 @@
 export * from '../shared/components';
 
-export * from './app/app.component';
+export * from './_app/app.component';
+export * from './another-page/another-page.component';
 export * from './some-page/some-page.component';
