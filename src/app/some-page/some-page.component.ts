@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { UiButtonComponent } from '../../../shared/components';
+import { UiButtonComponent } from '../presentation';
 
 /** The dumb (referentially transparent) component. Testable. No need for mocks. */
 @Component({

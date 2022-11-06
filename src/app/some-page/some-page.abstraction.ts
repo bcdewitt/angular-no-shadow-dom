@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { SomePageComponent } from '../presentation/some-page.component';
+import { SomePageFacadeModule, SomePageFacade } from '../core';
+import { SomePageComponent } from '../presentation';
 
 /** The smart component. Integrates/composes parts of the core layer and the presentation layer together */
 @Component({
   standalone: true,
-  imports: [CommonModule, SomePageComponent],
+  imports: [CommonModule, SomePageComponent, SomePageFacadeModule],
 
   selector: 'app-some-page-abstraction',
   template: `
@@ -13,4 +14,8 @@ import { SomePageComponent } from '../presentation/some-page.component';
   `,
   styles: [':host { display: contents; }'],
 })
-export class SomePageAbstractionComponent {}
+export class SomePageAbstractionComponent {
+  constructor(private somePageFacade: SomePageFacade) {
+    this.somePageFacade.setHeading('Some Page');
+  }
+}

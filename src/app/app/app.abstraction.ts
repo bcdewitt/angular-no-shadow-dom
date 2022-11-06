@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { AppFacade, AppFacadeModule } from '../core/app.core';
-import { AppComponent } from '../presentation/app.component';
+import { AppFacade, AppFacadeModule } from './app.core';
+import { AppComponent } from '../presentation';
 import { skip, take } from 'rxjs/operators';
 
 /** The smart component. Integrates/composes parts of the core layer and the presentation layer together */
@@ -27,9 +27,6 @@ import { skip, take } from 'rxjs/operators';
 export class AppAbstractionComponent {
   protected primaryNavOpen$ = this.appFacade.primaryNavOpen$;
   protected heading$ = this.appFacade.heading$;
-  protected url$ = this.appFacade.url$
-    //.pipe(skip(1))
-    .subscribe((url) => console.log(url));
 
   protected setPrimaryNavOpen(value: boolean): void {
     this.appFacade.setPrimaryNavOpen(value);

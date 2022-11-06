@@ -5,7 +5,8 @@ import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Route, RouterModule } from '@angular/router';
 
-import { AppAbstractionComponent } from './app/app/abstraction/app.abstraction';
+// NOTE: Routing is part of the abstraction layer. Only import components from there
+import { AppAbstractionComponent } from './app/abstraction';
 
 const ROUTES: Route[] = [
   {
@@ -16,7 +17,9 @@ const ROUTES: Route[] = [
   {
     path: 'some-page',
     loadComponent: () =>
-      import('./app/some-page').then((mod) => mod.SomePageAbstractionComponent),
+      import('./app/some-page/some-page.abstraction').then(
+        (mod) => mod.SomePageAbstractionComponent
+      ),
   },
 ];
 

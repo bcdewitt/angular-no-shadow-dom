@@ -10,7 +10,7 @@ import {
   UiButtonComponent,
   UiPageComponent,
   UiPrimaryNavLinkComponent,
-} from '../../../shared/components';
+} from '../presentation';
 
 /** The dumb (referentially transparent) component. Testable. No need for mocks. */
 @Component({
