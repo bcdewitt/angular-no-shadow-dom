@@ -19,5 +19,4 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class UiButtonComponent {
   @Input() type: 'primary' | 'secondary' | 'tertiary' = 'secondary';
-  @Input() label = '';
 }
