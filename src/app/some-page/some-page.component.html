@@ -1,3 +1,10 @@
-<ui-button type="primary">Primary Button</ui-button>
-<ui-button type="secondary">Secondary Button</ui-button>
-<ui-button type="tertiary">Tertiary Button</ui-button>
+<app-page
+  [primaryNavOpen]="primaryNavOpen"
+  [heading]="heading"
+  (setPrimaryNavOpen)="setPrimaryNavOpen.emit($event)"
+  (setUrl)="setUrl.emit($event)"
+>
+  <ui-button type="primary">Primary Button</ui-button>
+  <ui-button type="secondary">Secondary Button</ui-button>
+  <ui-button type="tertiary">Tertiary Button</ui-button>
+</app-page>

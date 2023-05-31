@@ -1,18 +1,28 @@
-import { NgModule } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { AppFacade, AppFacadeModule } from '../core';
+import { AppPageFacade } from '../core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AnotherPageFacade {
-  constructor(private appFacade: AppFacade) {}
+  title$;
+  setTitle;
+  url$;
+  setUrl;
+  heading$;
+  setHeading;
+  primaryNavOpen$;
+  setPrimaryNavOpen;
 
-  setHeading(value: string): void {
-    this.appFacade.setHeading(value);
+  constructor(appPageFacade: AppPageFacade) {
+    this.title$ = appPageFacade.title$;
+    this.setTitle = appPageFacade.setTitle.bind(appPageFacade);
+    this.url$ = appPageFacade.url$;
+    this.setUrl = appPageFacade.setUrl.bind(appPageFacade);
+    this.heading$ = appPageFacade.heading$;
+    this.setHeading = appPageFacade.setHeading.bind(appPageFacade);
+    this.primaryNavOpen$ = appPageFacade.primaryNavOpen$;
+    this.setPrimaryNavOpen =
+      appPageFacade.setPrimaryNavOpen.bind(appPageFacade);
   }
 }
-
-@NgModule({
-  imports: [AppFacadeModule],
-  providers: [AnotherPageFacade],
-})
-export class AnotherPageFacadeModule {}

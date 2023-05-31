@@ -6,19 +6,28 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { AppPageComponent, UiButtonComponent } from '../presentation';
+import {
+  UiButtonComponent,
+  UiPageComponent,
+  UiPrimaryNavLinkComponent,
+} from '../presentation';
 
 /** The dumb (referentially transparent) component. Testable. No need for mocks. */
 @Component({
   standalone: true,
-  imports: [CommonModule, AppPageComponent, UiButtonComponent],
+  imports: [
+    CommonModule,
+    UiButtonComponent,
+    UiPageComponent,
+    UiPrimaryNavLinkComponent,
+  ],
 
-  selector: 'app-some-page',
-  templateUrl: './some-page.component.html',
+  selector: 'app-page',
+  templateUrl: './page.component.html',
   styles: [':host { display: contents; }'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SomePageComponent {
+export class AppPageComponent {
   @Input() primaryNavOpen = false;
   @Input() heading = '';
 

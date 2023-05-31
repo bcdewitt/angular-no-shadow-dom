@@ -1,53 +1,32 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { AppFacade, AppFacadeModule } from './app.core';
-import { AppComponent } from '../presentation';
+import { AppFacade } from './app.core';
 import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { Title } from '@angular/platform-browser';
 
-/** The smart component. Integrates/composes parts of the core layer and the presentation layer together */
+/** Connects Router and Title state to AppFacade. Passes off component control to router-outlet */
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, AppComponent, AppFacadeModule],
+  imports: [CommonModule, RouterModule],
 
   selector: 'app-abstraction',
-  template: `
-    <app-presentation
-      [primaryNavOpen]="primaryNavOpen$ | async"
-      [heading]="heading$ | async"
-      (setPrimaryNavOpen)="setPrimaryNavOpen($event)"
-      (setUrl)="setUrl($event)"
-    >
-      <router-outlet></router-outlet>
-    </app-presentation>
-  `,
+  template: '<router-outlet></router-outlet>',
   styles: [':host, router-outlet { display: contents; }'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppAbstractionComponent implements OnDestroy {
-  protected primaryNavOpen$ = this.appFacade.primaryNavOpen$;
-  protected heading$ = this.appFacade.heading$;
-
-  protected setPrimaryNavOpen(value: boolean): void {
-    this.appFacade.setPrimaryNavOpen(value);
-  }
-
-  protected setUrl(url: string): void {
-    this.appFacade.setUrl(url);
-  }
-
   #urlSubscription: Subscription;
   #titleSubscription: Subscription;
   constructor(
-    private appFacade: AppFacade,
+    appFacade: AppFacade,
     titleService: Title,
     router: Router,
     route: ActivatedRoute
   ) {
     route.url.pipe(take(1)).subscribe(() => {
-      this.setUrl(window.location.pathname);
+      appFacade.setUrl(window.location.pathname);
     });
 
     this.#urlSubscription = appFacade.url$.subscribe((url) => {

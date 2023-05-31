@@ -1,1 +1,8 @@
-<ui-button>Oooo, different page content</ui-button>
+<app-page
+  [primaryNavOpen]="primaryNavOpen"
+  [heading]="heading"
+  (setPrimaryNavOpen)="setPrimaryNavOpen.emit($event)"
+  (setUrl)="setUrl.emit($event)"
+>
+  <ui-button>Oooo, different page content</ui-button>
+</app-page>

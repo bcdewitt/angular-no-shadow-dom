@@ -1,0 +1,15 @@
+<ui-page
+  [heading]="heading"
+  [primaryNavOpen]="primaryNavOpen"
+  (setPrimaryNavOpen)="setPrimaryNavOpen.emit($event)"
+  (setUrl)="setUrl.emit($event)"
+>
+  <ui-primary-nav-link slot="primary-nav-links" href="/some-page">
+    Some Page
+  </ui-primary-nav-link>
+  <ui-primary-nav-link slot="primary-nav-links" href="/another-page">
+    Another Page
+  </ui-primary-nav-link>
+
+  <ng-content></ng-content>
+</ui-page>
