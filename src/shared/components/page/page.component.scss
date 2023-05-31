@@ -27,15 +27,19 @@ mat-toolbar {
 }
 
 mat-drawer-container,
+mat-drawer-content,
 mat-drawer {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: #202327;
   color: #f0f0f0;
+  --mdc-text-button-label-text-color: #f0f0f0;
 }
 
-mat-drawer {
+mat-drawer,
+mat-nav-list {
   background-color: #2e3138;
   color: #f0f0f0;
+  --mdc-list-list-item-label-text-color: #f0f0f0;
 }
 
 .page__body {

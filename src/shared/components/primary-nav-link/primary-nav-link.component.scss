@@ -5,9 +5,11 @@
 
 a {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: #f0f0f0 !important;
+  color: #f0f0f0;
+  --mdc-list-list-item-hover-label-text-color: #f0f0f0;
   transition: background-color 0.2s;
   background-color: transparent;
+  cursor: pointer !important;
 }
 
 a:hover,
